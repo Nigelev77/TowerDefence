@@ -1,0 +1,12 @@
+﻿main.obj : error LNK2019: unresolved external symbol _gladLoadGL referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwInit referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwTerminate referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwCreateWindow referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwWindowShouldClose referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwPollEvents referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwMakeContextCurrent referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _glfwSwapBuffers referenced in function _main
+D:\Projects\TowerDefence\TowerDefence\external\GLFW\lib-vc2019\glfw3.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\Projects\TowerDefence\TowerDefence\external\Assimp\lib\x64\assimp-vc140-mt.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\Projects\TowerDefence\TowerDefence\external\spdlog\lib\spdlogd.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\Projects\TowerDefence\Debug\TowerDefence.exe : fatal error LNK1120: 8 unresolved externals
