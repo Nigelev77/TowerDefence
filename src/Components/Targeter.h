@@ -8,6 +8,7 @@ struct TargeterComponent
 	//since it would be more likely that the target will change more frequently
 	entt::entity target; //Current target to attack
 	int shootFn; //Debating whether to use array of func ptr or just have func ptr here
+	float cooldown;
 
 	TargeterComponent(entt::entity target, int fn)
 		: target{target}, shootFn(fn)

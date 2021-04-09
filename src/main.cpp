@@ -33,6 +33,7 @@
 #include "Systems/PlacementSystem.h"
 #include "Systems/SpawnSystem.h"
 #include "Systems/TravellerSystem.h"
+#include "Systems/ThreatTargettingSystem.h"
 
 
 
@@ -174,6 +175,7 @@ int main()
 		UpdatePlacer(registry, dt);
 		Spawning::UpdateWave(registry, dt);
 		Path::UpdateTravellers(registry, dt);
+		Enemy::UpdateThreatSystem(registry, dt);
 		Input::UpdateInputStates(registry, dt);
 
 

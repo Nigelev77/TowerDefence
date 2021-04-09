@@ -14,6 +14,10 @@ struct VelocityComponent
 		: dir{direction}, speed{1.0f}
 	{}
 
+	VelocityComponent(float sp)
+		: dir{0.0f,0.0f,0.0f}, speed{sp}
+	{}
+
 	VelocityComponent()
 		: dir{0.0f, 0.0f, 0.0f}, speed{0.0f}
 	{}

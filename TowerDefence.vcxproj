@@ -32,7 +32,9 @@
     <ClCompile Include="src\Helpers\PathFinding.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacer.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacerFunc\GenericTowerPlaceFunc.cpp" />
+    <ClCompile Include="src\Helpers\TowerShootFunc\TowerShootFunctions.cpp" />
     <ClCompile Include="src\Helpers\WaveHelpers.cpp" />
+    <ClCompile Include="src\Systems\CooldownSystem.cpp" />
     <ClCompile Include="src\Systems\ImGuiRendering.cpp" />
     <ClCompile Include="src\Systems\InputSystem.cpp" />
     <ClCompile Include="src\ContextTypes\Camera.cpp" />
@@ -47,6 +49,8 @@
     <ClCompile Include="src\Systems\PlacementSystem.cpp" />
     <ClCompile Include="src\Systems\RenderingSystem.cpp" />
     <ClCompile Include="src\Systems\SpawnSystem.cpp" />
+    <ClCompile Include="src\Systems\TargettingSystem.cpp" />
+    <ClCompile Include="src\Systems\ThreatTargettingSystem.cpp" />
     <ClCompile Include="src\Systems\TravellerSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +64,9 @@
     <ClInclude Include="external\ImGUI\imstb_truetype.h" />
     <ClInclude Include="external\ImGUI\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="external\ImGUI\misc\single_file\imgui_single_file.h" />
+    <ClInclude Include="src\Components\Bullet.h" />
+    <ClInclude Include="src\Components\Cooldown.h" />
+    <ClInclude Include="src\Components\Damage.h" />
     <ClInclude Include="src\Components\Target.h" />
     <ClInclude Include="src\Components\Targeter.h" />
     <ClInclude Include="src\Helpers\Logger.h" />
@@ -80,7 +87,9 @@
     <ClInclude Include="src\Helpers\PathFinding.h" />
     <ClInclude Include="src\Helpers\TowerPlacer.h" />
     <ClInclude Include="src\Helpers\TowerPlacerFunc\GenericTowerPlaceFunc.h" />
+    <ClInclude Include="src\Helpers\TowerShootFunc\TowerShootFunctions.h" />
     <ClInclude Include="src\Helpers\WaveHelpers.h" />
+    <ClInclude Include="src\Systems\CooldownSystem.h" />
     <ClInclude Include="src\Systems\ImGuiRendering.h" />
     <ClInclude Include="src\Systems\InputSystem.h" />
     <ClInclude Include="src\ContextTypes\Camera.h" />
@@ -97,6 +106,8 @@
     <ClInclude Include="src\Systems\PlacementSystem.h" />
     <ClInclude Include="src\Systems\RenderingSystem.h" />
     <ClInclude Include="src\Systems\SpawnSystem.h" />
+    <ClInclude Include="src\Systems\TargettingSystem.h" />
+    <ClInclude Include="src\Systems\ThreatTargettingSystem.h" />
     <ClInclude Include="src\Systems\TravellerSystem.h" />
   </ItemGroup>
   <ItemGroup>
