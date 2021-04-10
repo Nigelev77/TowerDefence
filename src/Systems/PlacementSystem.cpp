@@ -72,12 +72,8 @@ void UpdatePlacer(Registry& registry, float dt)
 		if (Tower::AttemptTowerPlace(transform.pos))
 		{
 			//Place Tower
-			const entt::entity tower = registry.create();
+			const entt::entity tower = TowerFactories[0](registry, transform.pos);
 			const int index = Tower::FindGridIndex(transform.pos);
-			const float scale = (float)(TERRAIN_BOX_WIDTH / 2);
-			registry.emplace<TransformComponent>(tower, transform.pos);
-			registry.emplace<SimpleRenderComponent>(tower, GetCubeBuffer(), GetCubeVertexCount());
-			registry.emplace<ScaleComponent>(tower, scale, scale, scale);
 			input.LButton = false;
 
 			if (!Path::RecalculatePath(registry))

@@ -34,7 +34,10 @@
     <ClCompile Include="src\Helpers\TowerPlacerFunc\GenericTowerPlaceFunc.cpp" />
     <ClCompile Include="src\Helpers\TowerShootFunc\TowerShootFunctions.cpp" />
     <ClCompile Include="src\Helpers\WaveHelpers.cpp" />
+    <ClCompile Include="src\Systems\BulletCollisionSystem.cpp" />
+    <ClCompile Include="src\Systems\BulletMoveSystem.cpp" />
     <ClCompile Include="src\Systems\CooldownSystem.cpp" />
+    <ClCompile Include="src\Systems\DeadSystem.cpp" />
     <ClCompile Include="src\Systems\ImGuiRendering.cpp" />
     <ClCompile Include="src\Systems\InputSystem.cpp" />
     <ClCompile Include="src\ContextTypes\Camera.cpp" />
@@ -46,6 +49,7 @@
     <ClCompile Include="src\Helpers\TimeKeeper.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\Systems\LifetimeSystem.cpp" />
     <ClCompile Include="src\Systems\PlacementSystem.cpp" />
     <ClCompile Include="src\Systems\RenderingSystem.cpp" />
     <ClCompile Include="src\Systems\SpawnSystem.cpp" />
@@ -67,6 +71,8 @@
     <ClInclude Include="src\Components\Bullet.h" />
     <ClInclude Include="src\Components\Cooldown.h" />
     <ClInclude Include="src\Components\Damage.h" />
+    <ClInclude Include="src\Components\Dead.h" />
+    <ClInclude Include="src\Components\Lifetime.h" />
     <ClInclude Include="src\Components\Target.h" />
     <ClInclude Include="src\Components\Targeter.h" />
     <ClInclude Include="src\Helpers\Logger.h" />
@@ -89,7 +95,10 @@
     <ClInclude Include="src\Helpers\TowerPlacerFunc\GenericTowerPlaceFunc.h" />
     <ClInclude Include="src\Helpers\TowerShootFunc\TowerShootFunctions.h" />
     <ClInclude Include="src\Helpers\WaveHelpers.h" />
+    <ClInclude Include="src\Systems\BulletCollisionSystem.h" />
+    <ClInclude Include="src\Systems\BulletMoveSystem.h" />
     <ClInclude Include="src\Systems\CooldownSystem.h" />
+    <ClInclude Include="src\Systems\DeadSystem.h" />
     <ClInclude Include="src\Systems\ImGuiRendering.h" />
     <ClInclude Include="src\Systems\InputSystem.h" />
     <ClInclude Include="src\ContextTypes\Camera.h" />
@@ -103,6 +112,7 @@
     <ClInclude Include="src\Helpers\ManageTerrain.h" />
     <ClInclude Include="src\Helpers\TimeKeeper.h" />
     <ClInclude Include="src\SingleIncludes\ecs.h" />
+    <ClInclude Include="src\Systems\LifetimeSystem.h" />
     <ClInclude Include="src\Systems\PlacementSystem.h" />
     <ClInclude Include="src\Systems\RenderingSystem.h" />
     <ClInclude Include="src\Systems\SpawnSystem.h" />

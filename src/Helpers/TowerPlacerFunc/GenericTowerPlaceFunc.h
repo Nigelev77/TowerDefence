@@ -2,7 +2,7 @@
 #include "../../SingleIncludes/ecs.h"
 #include "glm/glm.hpp"
 
-typedef void(*TOWER_FACTORY)(Registry&, glm::vec3);
+typedef entt::entity(*TOWER_FACTORY)(Registry&, glm::vec3);
 
 const static std::vector<TOWER_FACTORY> TowerFactories =
 {
@@ -12,7 +12,7 @@ const static std::vector<TOWER_FACTORY> TowerFactories =
 namespace Tower
 {
 
-	void PlaceGenericTower(Registry& registry, glm::vec3 pos);
+	entt::entity PlaceGenericTower(Registry& registry, glm::vec3 pos);
 
 
 }

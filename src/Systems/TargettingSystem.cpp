@@ -13,7 +13,7 @@
 void UpdateTargettingSystem(Registry& registry, float dt)
 {
 	if (registry.empty<EnemyComponent>()) return;
-	auto view = registry.view<TargeterComponent>(); //TODO: exclude cooldowns
+	auto view = registry.view<TargeterComponent>(entt::exclude<CooldownComponent>);
 	auto targetView = registry.view<TargetComponent>();
 	
 	const auto e = std::max_element(targetView.begin(), targetView.end(), [&targetView](const entt::entity left, const entt::entity right)
