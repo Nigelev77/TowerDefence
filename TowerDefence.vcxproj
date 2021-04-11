@@ -56,6 +56,7 @@
     <ClCompile Include="src\Systems\TargettingSystem.cpp" />
     <ClCompile Include="src\Systems\ThreatTargettingSystem.cpp" />
     <ClCompile Include="src\Systems\TravellerSystem.cpp" />
+    <ClCompile Include="src\Systems\UpdateHealth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="external\ImGUI\imconfig.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="src\Systems\TargettingSystem.h" />
     <ClInclude Include="src\Systems\ThreatTargettingSystem.h" />
     <ClInclude Include="src\Systems\TravellerSystem.h" />
+    <ClInclude Include="src\Systems\UpdateHealth.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\default.frag" />

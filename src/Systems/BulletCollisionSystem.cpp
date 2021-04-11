@@ -7,7 +7,7 @@
 #include "../Components/Damage.h"
 
 
-static const float MIN_PROXIMITY = 5.0f;
+static const float MIN_PROXIMITY = 10.0f;
 
 
 void UpdateBulletCollision(Registry& registry, float dt) //TODO: NEED TO IMPLEMENT A LIFETIME COMPONENT AS WELL
@@ -35,6 +35,7 @@ void UpdateBulletCollision(Registry& registry, float dt) //TODO: NEED TO IMPLEME
 		{
 			auto& enemyHealth = enemies.get<HealthComponent>(bullet.target);
 			enemyHealth.health -= damage.dmg;
+			registry.destroy(entity);
 		}
 	}
 

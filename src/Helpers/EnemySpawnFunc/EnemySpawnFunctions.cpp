@@ -9,12 +9,13 @@
 #include "../../Components/Enemy.h"
 #include "../../Components/Transform.h"
 #include "../../Components/Velocity.h"
-#include "../../Components/Targetable.h"
+#include "../../Components/Target.h"
 #include "../../Components/SimpleRender.h"
 #include "../../Components/Scale.h"
 #include "../../Components/Path.h"
+#include "../../Components/Health.h"
 
-
+static float GENERIC_HEALTH = 100.0f;
 
 namespace Enemy
 {
@@ -27,10 +28,11 @@ namespace Enemy
 		registry.emplace<ScaleComponent>(entity, 8.0f);
 		registry.emplace<VelocityComponent>(entity);
 		registry.emplace<PathComponent>(entity);
-		registry.emplace<TargetableCompnent>(entity);
+		registry.emplace<TargetComponent>(entity);
 		registry.emplace<LivesComponent>(entity, 1);
 		registry.emplace<EnemyComponent>(entity);
 		registry.emplace<SimpleRenderComponent>(entity, GetCubeBuffer(), GetCubeVertexCount());
+		registry.emplace<HealthComponent>(entity, GENERIC_HEALTH);
 	}
 
 }

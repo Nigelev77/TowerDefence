@@ -11,10 +11,7 @@
 
 
 static entt::entity SelectorEntity;
-static const TOWER_FACTORY towerFactories[] =
-{
-	Tower::PlaceGenericTower
-};
+static int currentTower = 0;
 
 
 
@@ -72,11 +69,11 @@ void UpdatePlacer(Registry& registry, float dt)
 		if (Tower::AttemptTowerPlace(transform.pos))
 		{
 			//Place Tower
-			const entt::entity tower = TowerFactories[0](registry, transform.pos);
+			const entt::entity tower = TowerFactories[currentTower](registry, transform.pos);
 			const int index = Tower::FindGridIndex(transform.pos);
 			input.LButton = false;
 
-			if (!Path::RecalculatePath(registry))
+			if (!Path::RecalculatePath(registry)) //Could do this before placed
 			{
 				registry.destroy(tower);
 				Tower::TowerGrid.towerGrid[index].occupied = false;

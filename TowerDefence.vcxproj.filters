@@ -126,6 +126,9 @@
     <ClCompile Include="src\Systems\DeadSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Systems\UpdateHealth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ContextTypes\WindowDetails.h">
@@ -309,6 +312,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Systems\DeadSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Systems\UpdateHealth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

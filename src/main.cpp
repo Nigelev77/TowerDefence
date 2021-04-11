@@ -34,6 +34,13 @@
 #include "Systems/SpawnSystem.h"
 #include "Systems/TravellerSystem.h"
 #include "Systems/ThreatTargettingSystem.h"
+#include "Systems/TargettingSystem.h"
+#include "Systems/CooldownSystem.h"
+#include "Systems/DeadSystem.h"
+#include "Systems/LifetimeSystem.h"
+#include "Systems/BulletMoveSystem.h"
+#include "Systems/BulletCollisionSystem.h"
+
 
 
 
@@ -171,12 +178,18 @@ int main()
 	while (!glfwWindowShouldClose(window) && running)
 	{
 		const float dt = timer.GetDeltaTime(); //MICROSECONDS
-		UpdateRendering(registry, dt);
+		Input::UpdateInputStates(registry, dt);
 		UpdatePlacer(registry, dt);
 		Spawning::UpdateWave(registry, dt);
 		Path::UpdateTravellers(registry, dt);
 		Enemy::UpdateThreatSystem(registry, dt);
-		Input::UpdateInputStates(registry, dt);
+		UpdateTargettingSystem(registry, dt);
+		UpdateCooldowns(registry, dt);
+		UpdateBullet(registry, dt);
+		UpdateBulletCollision(registry, dt);
+		UpdateLifetimes(registry, dt);
+		UpdateDead(registry, dt);
+		UpdateRendering(registry, dt);
 
 
 		//TODO: Cooldown system can be applied universally so instead 

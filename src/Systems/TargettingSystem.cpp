@@ -39,7 +39,7 @@ void UpdateTargettingSystem(Registry& registry, float dt)
 			targeter.target = threatEnemy;
 		}
 
-		if (targeter.shootFn > 0)
+		if (targeter.shootFn >= 0)
 		{
 			ShootFunc[targeter.shootFn](registry, entity, targeter.target);
 			registry.emplace<CooldownComponent>(entity, targeter.cooldown);

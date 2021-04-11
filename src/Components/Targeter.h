@@ -30,6 +30,6 @@ struct TargeterComponent
 	{}
 
 	TargeterComponent(int fn, float cooldown)
-		: target{entt::null}, shootFn{fn}, cooldown{ DEFAULT_COOLDOWN }
+		: target{entt::null}, shootFn{fn}, cooldown{ cooldown }
 	{}
 };
