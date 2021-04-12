@@ -13,6 +13,7 @@
 #include "ContextTypes/WindowDetails.h"
 #include "ContextTypes/Camera.h"
 #include "ContextTypes/InputState.h"
+#include "ContextTypes/PlayerInfo.h"
 
 //Helpers
 #include "Helpers/TimeKeeper.h"
@@ -23,6 +24,7 @@
 #include "Helpers/PathFinding.h"
 #include "Helpers/WaveHelpers.h"
 #include "Helpers/Logger.h"
+#include "Helpers/MoneyHelpers.h"
 
 
 
@@ -40,6 +42,7 @@
 #include "Systems/LifetimeSystem.h"
 #include "Systems/BulletMoveSystem.h"
 #include "Systems/BulletCollisionSystem.h"
+#include "Systems/HealthSystem.h"
 
 
 
@@ -109,6 +112,14 @@ int main()
 	{
 
 		registry.set<std::unordered_map<std::string, void*>>(); //Needed by input system
+		//Init Camera for Registry
+		//TODO: Initialise these together possibly?
+		registry.set<Camera>();
+		registry.set<InputStates>();
+		registry.set<ImGuiIO*>(&io);
+		registry.set<Logger>();
+		registry.set<PlayerInfo>();
+		
 
 		Input::InitInputSystem(registry);
 
@@ -125,12 +136,8 @@ int main()
 		defaultShader.RegisterMat4("u_MVP");
 		registry.set<Shader>(defaultShader);
 
-		//Init Camera for Registry
-		//TODO: Initialise these together possibly?
-		registry.set<Camera>();
-		registry.set<InputStates>();
-		registry.set<ImGuiIO*>(&io);
-		registry.set<Logger>();
+		Money::InitMoney(registry);
+
 
 
 		glfwSetInputMode(windowDetails.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -187,6 +194,7 @@ int main()
 		UpdateCooldowns(registry, dt);
 		UpdateBullet(registry, dt);
 		UpdateBulletCollision(registry, dt);
+		UpdateHealth(registry, dt);
 		UpdateLifetimes(registry, dt);
 		UpdateDead(registry, dt);
 		UpdateRendering(registry, dt);

@@ -73,6 +73,13 @@ void UpdatePlacer(Registry& registry, float dt)
 			const int index = Tower::FindGridIndex(transform.pos);
 			input.LButton = false;
 
+			if (tower == entt::null)
+			{
+				Tower::TowerGrid.towerGrid[index].occupied = false; //Unsuccessful place
+				return;
+
+			}
+
 			if (!Path::RecalculatePath(registry)) //Could do this before placed
 			{
 				registry.destroy(tower);

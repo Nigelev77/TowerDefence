@@ -15,3 +15,8 @@ const static std::vector<TOWER_FACTORY> TowerFactories =
 	&Tower::PlaceGenericTower
 };
 
+const static std::vector<int> TowerCosts =
+{
+	100
+};
+
