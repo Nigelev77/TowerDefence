@@ -6,7 +6,7 @@
 
 
 #include "../Helpers/MakeCube.h"
-#include "../Helpers/TowerPlacerFunc/GenericTowerPlaceFunc.h"
+#include "../Helpers/TowerPlacerFunc/TowerPlaceFunc.h"
 #include "../Helpers/PathFinding.h"
 
 

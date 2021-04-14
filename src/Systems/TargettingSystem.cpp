@@ -24,7 +24,7 @@ void UpdateTargettingSystem(Registry& registry, float dt)
 		}
 	);
 	const auto threatEnemy = *e;
-
+	if (targetView.empty()) return; //No enemies and so therefore do not shoot.
 
 	for (auto entity : view)
 	{

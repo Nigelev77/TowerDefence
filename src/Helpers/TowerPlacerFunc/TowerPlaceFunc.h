@@ -8,15 +8,16 @@ namespace Tower
 {
 
 	entt::entity PlaceGenericTower(Registry& registry, glm::vec3 pos);
+	entt::entity PlaceLaserTower(Registry& registry, glm::vec3 pos);
 
 }
 const static std::vector<TOWER_FACTORY> TowerFactories =
 {
-	&Tower::PlaceGenericTower
+	&Tower::PlaceGenericTower, &Tower::PlaceLaserTower
 };
 
 const static std::vector<int> TowerCosts =
 {
-	100
+	100, 250
 };
 
