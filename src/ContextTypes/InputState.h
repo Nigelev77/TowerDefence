@@ -20,4 +20,5 @@ struct InputStates
 	bool MouseFree;
 	bool LButton, RButton;
 	Position lastPos, currPos; //Last and current position of the mouse to get a dx and dy
+	float xOff, yOff; //For scroll
 };

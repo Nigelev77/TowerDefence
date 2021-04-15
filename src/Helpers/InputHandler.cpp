@@ -27,6 +27,12 @@ namespace Input
 		glfwSetWindowSizeCallback(details.window, fun);
 	}
 
+	void SetMouseScrollCallback(SCROLL_CALLBACK fun, Registry& registry)
+	{
+		WindowDetails& details = registry.ctx<WindowDetails>();
+		glfwSetScrollCallback(details.window, fun);
+	}
+
 	
 
 

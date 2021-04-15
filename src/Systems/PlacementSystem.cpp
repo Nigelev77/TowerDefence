@@ -33,6 +33,15 @@ void UpdatePlacer(Registry& registry, float dt)
 	const Camera& cam = registry.ctx<Camera>();
 	InputStates& input = registry.ctx<InputStates>();
 	TransformComponent& transform = registry.get<TransformComponent>(SelectorEntity);
+
+	const auto dScroll = input.yOff < 0 ? -1 : 1;
+	const static int numTowers = TowerFactories.size();
+	input.yOff = 0;
+
+	currentTower = (currentTower + dScroll + numTowers) % numTowers;
+	
+
+
 	
 	//TODO: Only build in build mode
 

@@ -56,6 +56,7 @@
     <ClCompile Include="src\Systems\SpawnSystem.cpp" />
     <ClCompile Include="src\Systems\TargettingSystem.cpp" />
     <ClCompile Include="src\Systems\ThreatTargettingSystem.cpp" />
+    <ClCompile Include="src\Systems\TransitionLineSystem.cpp" />
     <ClCompile Include="src\Systems\TravellerSystem.cpp" />
     <ClCompile Include="src\Systems\HealthSystem.cpp" />
   </ItemGroup>
@@ -124,6 +125,7 @@
     <ClInclude Include="src\Systems\SpawnSystem.h" />
     <ClInclude Include="src\Systems\TargettingSystem.h" />
     <ClInclude Include="src\Systems\ThreatTargettingSystem.h" />
+    <ClInclude Include="src\Systems\TransitionLineSystem.h" />
     <ClInclude Include="src\Systems\TravellerSystem.h" />
     <ClInclude Include="src\Systems\HealthSystem.h" />
   </ItemGroup>

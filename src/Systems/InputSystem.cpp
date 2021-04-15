@@ -115,6 +115,7 @@ namespace Input
 		SetMouseButtonCallback(&MouseButtonInput, registry);
 		SetMousePosCallback(&MousePosInput, registry);
 		SetWindowResizeCallback(&WindowResizeInput, registry);
+		SetMouseScrollCallback(&MouseScrollInput, registry);
 		auto& pointerMap = registry.ctx<std::unordered_map<std::string, void*>>();
 		pointerMap["speed"] = static_cast<void*>(&speedModifier);
 	}

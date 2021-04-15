@@ -78,6 +78,13 @@ namespace Input
 		glViewport(0, 0, width, height);
 	}
 
+	void MouseScrollInput(GLFWwindow* window, double xOff, double yOff)
+	{
+		InputStates& states = externalReg->ctx<InputStates>();
+		states.xOff = xOff;
+		states.yOff = yOff;
+	}
+
 
 	//Sets the registry pointer for this file
 	void SetRegistry(Registry& registry)
