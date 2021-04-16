@@ -5,6 +5,11 @@
 #include "../Components/Transform.h"
 #include "../Components/Scale.h"
 #include "../Components/LineStipRender.h"
+#include "../Components/TransitionLine.h"
+
+
+#include "../Helpers/LineTransformHelper.h"
+#include <iostream>
 
 static void RenderSimple(Registry& registry)
 {
@@ -50,6 +55,33 @@ static void RenderLines(Registry& registry)
 	glBindVertexArray(0);
 }
 
+static void RenderTransitionLines(Registry& registry)
+{
+	auto lines = registry.view<TransitionLineComponent, TransformComponent>();
+
+	const Camera& cam = registry.ctx<Camera>();
+	Shader& defaultShader = registry.ctx<Shader>();
+	defaultShader.Use();
+	const glm::mat4 vp = cam.m_Proj * cam.m_viewMat;
+	const static GLuint lineID = GetLineBuffer();
+	const static unsigned int vertices = GetLineVertices();
+
+	glLineWidth(10.0f);
+
+	for (auto entity : lines)
+	{
+		auto [line, transform] = lines.get<TransitionLineComponent, TransformComponent>(entity);
+		glm::mat4 transformMat = glm::translate(glm::mat4(1.0f), transform.pos)*Line::GetTransformMatrix(line.line);
+		const glm::mat4 u_MVP = vp * transformMat;
+		defaultShader.SetMat4(u_MVP, "u_MVP");
+		glBindVertexArray(lineID);
+		glDrawElements(GL_LINES, vertices, GL_UNSIGNED_INT, nullptr);
+	}
+
+	glLineWidth(1.0f);
+
+}
+
 void UpdateRendering(Registry& registry, float dt)
 {
 	//First clear main framebuffer
@@ -59,6 +91,7 @@ void UpdateRendering(Registry& registry, float dt)
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	RenderSimple(registry);
 	RenderLines(registry);
+	RenderTransitionLines(registry);
 	Terrain::RenderTerrain(registry);
 
 }

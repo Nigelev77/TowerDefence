@@ -22,6 +22,7 @@ void UpdateBullet(Registry& registry, float dt)
 		if (!positions.contains(bullet.target)) //Target does not exist anymore so destroy bullet
 		{
 			registry.destroy(entity);
+			continue;
 		}
 
 		const glm::vec3 dest = positions.get<TransformComponent>(bullet.target).pos;

@@ -1,5 +1,6 @@
 #include "MakeCube.h"
 
+static GLuint bufferID = 0;
 
 const static float buffer[24] =
 {

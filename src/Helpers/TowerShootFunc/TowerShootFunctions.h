@@ -25,5 +25,5 @@ namespace Tower
 */
 static const SHOOT_FN ShootFunc[] =
 {
-	&Tower::GenericShoot
+	&Tower::GenericShoot, &Tower::LaserShoot
 };

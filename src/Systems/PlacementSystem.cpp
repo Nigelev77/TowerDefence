@@ -9,6 +9,7 @@
 #include "../Helpers/TowerPlacerFunc/TowerPlaceFunc.h"
 #include "../Helpers/PathFinding.h"
 
+#include <iostream>
 
 static entt::entity SelectorEntity;
 static int currentTower = 0;
@@ -34,7 +35,7 @@ void UpdatePlacer(Registry& registry, float dt)
 	InputStates& input = registry.ctx<InputStates>();
 	TransformComponent& transform = registry.get<TransformComponent>(SelectorEntity);
 
-	const auto dScroll = input.yOff < 0 ? -1 : 1;
+	const auto dScroll = input.yOff < 0 ? -1 : input.yOff>0 ? 1 : 0;
 	const static int numTowers = TowerFactories.size();
 	input.yOff = 0;
 
@@ -77,9 +78,11 @@ void UpdatePlacer(Registry& registry, float dt)
 	{
 		if (Tower::AttemptTowerPlace(transform.pos))
 		{
+			const int index = Tower::FindGridIndex(transform.pos);
+			if (index < 0) return;
 			//Place Tower
 			const entt::entity tower = TowerFactories[currentTower](registry, transform.pos);
-			const int index = Tower::FindGridIndex(transform.pos);
+			std::cout << currentTower << '\n';
 			input.LButton = false;
 
 			if (tower == entt::null)

@@ -42,7 +42,6 @@ void UpdateTargettingSystem(Registry& registry, float dt)
 		if (targeter.shootFn >= 0)
 		{
 			ShootFunc[targeter.shootFn](registry, entity, targeter.target);
-			registry.emplace<CooldownComponent>(entity, targeter.cooldown);
 		}
 	}
 }

@@ -135,6 +135,9 @@
     <ClCompile Include="src\Systems\TransitionLineSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Helpers\LineTransformHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ContextTypes\WindowDetails.h">
@@ -336,6 +339,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Systems\TransitionLineSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\LineTransformHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,6 +25,8 @@
 #include "Helpers/WaveHelpers.h"
 #include "Helpers/Logger.h"
 #include "Helpers/MoneyHelpers.h"
+#include "Helpers/LineTransformHelper.h"
+
 
 
 
@@ -43,6 +45,7 @@
 #include "Systems/BulletMoveSystem.h"
 #include "Systems/BulletCollisionSystem.h"
 #include "Systems/HealthSystem.h"
+#include "Systems/TransitionLineSystem.h"
 
 
 
@@ -103,6 +106,7 @@ int main()
 	{//For initing basic shapes and models into OpenGL e.g. InitCube()
 
 		InitCube();
+		InitLine();
 
 	}
 
@@ -118,7 +122,7 @@ int main()
 		registry.set<InputStates>();
 		registry.set<ImGuiIO*>(&io);
 		registry.set<Logger>();
-		registry.set<PlayerInfo>();
+		registry.set<PlayerInfo>(100, 9000, 0);
 		
 
 		Input::InitInputSystem(registry);
@@ -194,6 +198,7 @@ int main()
 		UpdateCooldowns(registry, dt);
 		UpdateBullet(registry, dt);
 		UpdateBulletCollision(registry, dt);
+		UpdateTransitionalLines(registry, dt);
 		UpdateHealth(registry, dt);
 		UpdateLifetimes(registry, dt);
 		UpdateDead(registry, dt);
@@ -207,7 +212,6 @@ int main()
 		//Render Reference Triangle. DO NOT DELETE THIS YET
 		glBindVertexArray(vao);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
-
 
 
 		//ImGui stuff, separate into a different system probably/helper
