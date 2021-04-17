@@ -2,6 +2,9 @@
 
 #include <math.h>
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/quaternion.hpp"
+#include "glm/gtx/quaternion.hpp"
+
 
 #define X_AXIS glm::vec3(1.0f, 0.0f, 0.0f)
 #define Y_AXIS glm::vec3(0.0f, 1.0f, 0.0f)
@@ -60,17 +63,20 @@ void InitLine()
 
 namespace Line
 {
-    glm::mat4 GetTransformMatrix(glm::vec3 line)
+    glm::mat4 GetTransformMatrix(glm::vec3 line, glm::vec3 pos)
     {
-        const float scale = glm::distance({ 0.0f, 0.0f, 0.0f }, line);
-        const double xAngle = std::atan2(line.y, line.x);
-        const double zAngle = std::atan2(line.x, line.z);
-        const double yAngle = std::atan2(line.x, line.y);
-        glm::mat4 transformMat = glm::scale(glm::mat4(1.0f), glm::vec3(scale, 1.0f, 1.0f));
-        transformMat = glm::rotate(transformMat, (float)xAngle, X_AXIS);
-        transformMat = glm::rotate(transformMat, (float)yAngle, Y_AXIS);
-        transformMat = glm::rotate(transformMat, (float)zAngle, Z_AXIS);
-        return transformMat;
+        const float scale = glm::length(line);
+        const glm::vec3 normLine = glm::normalize(line);
+        const float dotProd = glm::dot(X_AXIS, normLine);
+        const glm::vec3 perp = glm::cross(X_AXIS, normLine);
+        glm::mat4 scaleMat = glm::scale(glm::mat4(1.0f), glm::vec3(scale, 0.0f, 0.0f));
+        float s = std::sqrt((1 + dotProd) * 2);
+        float invs = 1.0f / s;
+        glm::quat o{ s * 0.5f, perp.x * invs, perp.y * invs, perp.z * invs };
+        glm::mat4 transMat = glm::translate(glm::mat4(1.0f), pos);
+        glm::mat4 transform = transMat * glm::toMat4(o) * scaleMat;
+        //TODO: UNDERSTAND MORE ABOUT QUATERNIONS
+        return transform;
     }
 
 }

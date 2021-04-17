@@ -47,7 +47,7 @@ namespace Tower
 		registry.emplace<TransformComponent>(tower, pos);
 		registry.emplace<SimpleRenderComponent>(tower, GetCubeBuffer(), GetCubeVertexCount());
 		registry.emplace<ScaleComponent>(tower, scale, scale, scale);
-		registry.emplace<TargeterComponent>(tower, LASER_INDEX, 0.5f);
+		registry.emplace<TargeterComponent>(tower, LASER_INDEX, 0.25f);
 
 		//Create "Laser" that the tower will have so it's "laser" will always exist but will only appear when shooting at an enemy
 		//And when shooting, the tower doesn't need to create any new entity and only needs to do a few updates on the laser related components.

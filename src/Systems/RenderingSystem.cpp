@@ -66,12 +66,12 @@ static void RenderTransitionLines(Registry& registry)
 	const static GLuint lineID = GetLineBuffer();
 	const static unsigned int vertices = GetLineVertices();
 
-	glLineWidth(10.0f);
+	glLineWidth(5.0f);
 
 	for (auto entity : lines)
 	{
 		auto [line, transform] = lines.get<TransitionLineComponent, TransformComponent>(entity);
-		glm::mat4 transformMat = glm::translate(glm::mat4(1.0f), transform.pos)*Line::GetTransformMatrix(line.line);
+		glm::mat4 transformMat = Line::GetTransformMatrix(line.line, transform.pos);
 		const glm::mat4 u_MVP = vp * transformMat;
 		defaultShader.SetMat4(u_MVP, "u_MVP");
 		glBindVertexArray(lineID);
