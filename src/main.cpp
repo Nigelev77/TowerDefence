@@ -26,6 +26,8 @@
 #include "Helpers/Logger.h"
 #include "Helpers/MoneyHelpers.h"
 #include "Helpers/LineTransformHelper.h"
+#include "Helpers/BillboardHelpers.h"
+#include "Helpers/ImageLoader.h"
 
 
 
@@ -107,7 +109,8 @@ int main()
 
 		InitCube();
 		InitLine();
-
+		InitBillboard();
+		LoadTextures();
 	}
 
 
@@ -128,7 +131,7 @@ int main()
 		Input::InitInputSystem(registry);
 
 		//Terrain
-		Terrain::InitTerrain(registry);
+		InitRendering(registry);
 		PlaceInit(registry);
 		InitPath(registry);
 		const glm::vec3 position{ 0.5F * TERRAIN_BOX_WIDTH, TERRAIN_BOX_WIDTH / 2, -0.5f * TERRAIN_BOX_WIDTH };

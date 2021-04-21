@@ -26,12 +26,15 @@
     <ClCompile Include="external\ImGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="external\ImGUI\imgui_widgets.cpp" />
     <ClCompile Include="external\ImGUI\misc\cpp\imgui_stdlib.cpp" />
+    <ClCompile Include="src\Helpers\BillboardHelpers.cpp" />
+    <ClCompile Include="src\Helpers\ImageLoader.cpp" />
     <ClCompile Include="src\Helpers\LineTransformHelper.cpp" />
     <ClCompile Include="src\Helpers\Logger.cpp" />
     <ClCompile Include="src\Helpers\EnemySpawnFunc\EnemySpawnFunctions.cpp" />
     <ClCompile Include="src\Helpers\MakeCube.cpp" />
     <ClCompile Include="src\Helpers\MoneyHelpers.cpp" />
     <ClCompile Include="src\Helpers\PathFinding.cpp" />
+    <ClCompile Include="src\Helpers\TextureHelpers.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacer.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacerFunc\TowerPlaceFunc.cpp" />
     <ClCompile Include="src\Helpers\TowerShootFunc\TowerShootFunctions.cpp" />
@@ -72,6 +75,26 @@
     <ClInclude Include="external\ImGUI\imstb_truetype.h" />
     <ClInclude Include="external\ImGUI\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="external\ImGUI\misc\single_file\imgui_single_file.h" />
+    <ClInclude Include="external\stb_image\stb.h" />
+    <ClInclude Include="external\stb_image\stb_connected_components.h" />
+    <ClInclude Include="external\stb_image\stb_c_lexer.h" />
+    <ClInclude Include="external\stb_image\stb_divide.h" />
+    <ClInclude Include="external\stb_image\stb_dxt.h" />
+    <ClInclude Include="external\stb_image\stb_easy_font.h" />
+    <ClInclude Include="external\stb_image\stb_herringbone_wang_tile.h" />
+    <ClInclude Include="external\stb_image\stb_image.h" />
+    <ClInclude Include="external\stb_image\stb_image_resize.h" />
+    <ClInclude Include="external\stb_image\stb_image_write.h" />
+    <ClInclude Include="external\stb_image\stb_leakcheck.h" />
+    <ClInclude Include="external\stb_image\stb_perlin.h" />
+    <ClInclude Include="external\stb_image\stb_rect_pack.h" />
+    <ClInclude Include="external\stb_image\stb_sprintf.h" />
+    <ClInclude Include="external\stb_image\stb_textedit.h" />
+    <ClInclude Include="external\stb_image\stb_tilemap_editor.h" />
+    <ClInclude Include="external\stb_image\stb_truetype.h" />
+    <ClInclude Include="external\stb_image\stb_voxel_render.h" />
+    <ClInclude Include="external\stb_image\stretchy_buffer.h" />
+    <ClInclude Include="src\Components\Billboard.h" />
     <ClInclude Include="src\Components\Bullet.h" />
     <ClInclude Include="src\Components\Cooldown.h" />
     <ClInclude Include="src\Components\Damage.h" />
@@ -83,6 +106,7 @@
     <ClInclude Include="src\Components\TransitionLine.h" />
     <ClInclude Include="src\ContextTypes\PlayerInfo.h" />
     <ClInclude Include="src\Helpers\BillboardHelpers.h" />
+    <ClInclude Include="src\Helpers\ImageLoader.h" />
     <ClInclude Include="src\Helpers\LineTransformHelper.h" />
     <ClInclude Include="src\Helpers\Logger.h" />
     <ClInclude Include="src\Components\Enemy.h" />
@@ -102,6 +126,7 @@
     <ClInclude Include="src\Helpers\MoneyHelpers.h" />
     <ClInclude Include="src\Helpers\PathFinding.h" />
     <ClInclude Include="src\Helpers\TextHelpers.h" />
+    <ClInclude Include="src\Helpers\TextureHelpers.h" />
     <ClInclude Include="src\Helpers\TowerPlacer.h" />
     <ClInclude Include="src\Helpers\TowerPlacerFunc\TowerPlaceFunc.h" />
     <ClInclude Include="src\Helpers\TowerShootFunc\TowerShootFunctions.h" />
@@ -134,10 +159,12 @@
     <ClInclude Include="src\Systems\HealthSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Shaders\billboard.frag" />
     <None Include="src\Shaders\default.frag" />
     <None Include="src\Shaders\default.vert" />
     <None Include="src\Shaders\terrain.frag" />
     <None Include="src\Shaders\terrain.vert" />
+    <None Include="src\Shaders\billboard.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

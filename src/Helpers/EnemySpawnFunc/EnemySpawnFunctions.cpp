@@ -2,7 +2,7 @@
 
 //Helpers
 #include "../../Helpers/MakeCube.h"
-
+#include "../../Helpers/TextureHelpers.h"
 
 //Components
 #include "../../Components/Lives.h"
@@ -14,6 +14,7 @@
 #include "../../Components/Scale.h"
 #include "../../Components/Path.h"
 #include "../../Components/Health.h"
+#include "../../Components/Billboard.h"
 
 static float GENERIC_HEALTH = 100.0f;
 
@@ -33,6 +34,11 @@ namespace Enemy
 		registry.emplace<EnemyComponent>(entity);
 		registry.emplace<SimpleRenderComponent>(entity, GetCubeBuffer(), GetCubeVertexCount());
 		registry.emplace<HealthComponent>(entity, GENERIC_HEALTH);
+
+		const static unsigned int healthbarTex = GetTextureInfo("healthbar");
+		
+		registry.emplace<BillboardComponent>(entity, healthbarTex, glm::vec3(0.0f, 5.0f, 0.0f), 10.0f);
+
 	}
 
 }

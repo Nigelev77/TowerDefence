@@ -6,10 +6,18 @@
 #include "../Components/Scale.h"
 #include "../Components/LineStipRender.h"
 #include "../Components/TransitionLine.h"
-
+#include "../Components/Billboard.h"
+#include "../Components/Health.h"
 
 #include "../Helpers/LineTransformHelper.h"
+#include "../Helpers/BillboardHelpers.h"
 #include <iostream>
+#include <unordered_map>
+#include <string>
+
+static std::unordered_map<std::string, Shader> shaderMap{};
+
+
 
 static void RenderSimple(Registry& registry)
 {
@@ -82,6 +90,36 @@ static void RenderTransitionLines(Registry& registry)
 
 }
 
+static void RenderBillboards(Registry& registry)
+{
+	static Shader& billShader = shaderMap["billboard"];
+	const static GLuint boardID = GetBoardID();
+	const static unsigned int boardVert = GetBoardVertex();
+	Camera& cam = registry.ctx<Camera>();
+	if (registry.empty<BillboardComponent>()) return;
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glDisable(GL_BLEND);
+	billShader.Use();
+
+	auto view = registry.view<BillboardComponent, TransformComponent, HealthComponent>();
+	for (auto entity : view)
+	{
+		auto [bill, transform, health] = view.get<BillboardComponent, TransformComponent, HealthComponent>(entity);
+		billShader.SetMat4(cam.GetViewMat(), "view");
+		billShader.SetMat4(cam.m_Proj, "proj");
+		billShader.SetFloat(health.health / health.maxHealth, "health");
+		billShader.SetVec2(glm::vec2(bill.size, bill.size), "scale");
+		billShader.SetVec3(transform.pos, "worldPos");
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, bill.textureID);
+		billShader.SetUInt1(0, "tex");
+		glBindVertexArray(boardID);
+		glDrawElements(GL_TRIANGLES, boardVert, GL_UNSIGNED_INT, nullptr);
+	}
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+}
+
 void UpdateRendering(Registry& registry, float dt)
 {
 	//First clear main framebuffer
@@ -92,6 +130,25 @@ void UpdateRendering(Registry& registry, float dt)
 	RenderSimple(registry);
 	RenderLines(registry);
 	RenderTransitionLines(registry);
+	RenderBillboards(registry);
 	Terrain::RenderTerrain(registry);
+
+}
+
+void InitRendering(Registry& registry)
+{
+	Terrain::InitTerrain(registry);
+
+	//Load up Shaders
+	shaderMap.emplace(std::make_pair("billboard", Shader{ "src/shaders/billboard.vert", "src/shaders/billboard.frag" }));
+	Shader& billShader = shaderMap["billboard"]; //TODO: Instead of doing this, create the shader and then add it to the map
+	billShader.Use();
+	billShader.RegisterMat4("proj");
+	billShader.RegisterMat4("view");
+	billShader.RegisterUniform("worldPos");
+	billShader.RegisterUniform("scale");
+	billShader.RegisterUniform("health");
+	billShader.RegisterUniform("tex");
+	
 
 }

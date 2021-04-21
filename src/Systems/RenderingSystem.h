@@ -10,3 +10,4 @@ Basic Rendering
 #include "glad/glad.h"
 
 void UpdateRendering(Registry& registry, float dt);
+void InitRendering(Registry& registry);

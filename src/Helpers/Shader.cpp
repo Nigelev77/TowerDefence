@@ -89,7 +89,6 @@ void Shader::Use()
 
 void Shader::SetMat4(const glm::mat4& mat, std::string_view name)
 {
-	//GLuint loc = m_UniformMap[name.data()];
 	glUseProgram(m_ProgID);
 	GLuint loc = glGetUniformLocation(m_ProgID, name.data());
 	glUniformMatrix4fv(loc, 1, false, &mat[0][0]);
@@ -109,4 +108,31 @@ void Shader::RegisterMat4(std::string_view name)
 	m_UniformMap[name.data()] = glGetUniformLocation(m_ProgID, name.data());
 }
 
+void Shader::RegisterUniform(std::string_view name)
+{
+	Use();
+	m_UniformMap[name.data()] = glGetUniformLocation(m_ProgID, name.data());
+}
+
+void Shader::SetVec2(const glm::vec2& vec, std::string_view name)
+{
+	Use();
+	GLuint loc = glGetUniformLocation(m_ProgID, name.data());
+	glUniform2f(loc, vec.x, vec.y);
+}
+
+//TODO: Differentiate between active texture binding and uniform bindings
+void Shader::SetUInt1(unsigned int i, std::string_view name)
+{
+	Use();
+	GLuint loc = glGetUniformLocation(m_ProgID, name.data());
+	glUniform1i(loc, (int)i);
+}
+
+void Shader::SetVec3(const glm::vec3& vec, std::string_view name)
+{
+	Use();
+	GLuint loc = glGetUniformLocation(m_ProgID, name.data());
+	glUniform3f(loc, vec.x, vec.y, vec.z);
+}
 
