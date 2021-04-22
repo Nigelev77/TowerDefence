@@ -26,7 +26,8 @@ void FreeImage(ImageInfo& info)
 void LoadTextures()
 {
 	ImageInfo img;
-	LoadImage("res/particle.DDS", img);
+	img.colorRes = 4;
+	LoadImage("res/healthBar.png", img);
 	GLuint texID;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);

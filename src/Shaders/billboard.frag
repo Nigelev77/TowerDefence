@@ -11,6 +11,6 @@ void main(void)
 {
 	outColour = texture(tex, fragTexCoords);
 	if(fragTexCoords.x<health)
-		outColour = vec4(1.0, 1.0, 1.0, 1.0);
+		outColour = vec4(0.0, 1.0, 0.0, 1.0);
 	
 }

@@ -110,6 +110,7 @@ int main()
 		InitCube();
 		InitLine();
 		InitBillboard();
+		TextureLoadInit();
 		LoadTextures();
 	}
 
@@ -181,7 +182,7 @@ int main()
 	glEnableVertexAttribArray(0);
 
 
-
+	//TODO: Clean up I/O system and make sure that when in imgui interaction mode, I cannot place towers down.
 
 
 	//TODO: Now just polish up a bit of the controls and allowing ImGUI to change speed etc.

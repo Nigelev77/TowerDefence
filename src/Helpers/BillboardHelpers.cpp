@@ -58,7 +58,7 @@ void AttachBillboard(Registry& registry, entt::entity entity, glm::vec3 pos, uns
 
 void AttachBillboard(Registry& registry, entt::entity entity, glm::vec3 pos, unsigned int textureID, float size)
 {
-	registry.emplace<BillboardComponent>(entity, textureID, pos, size);
+	registry.emplace<BillboardComponent>(entity, textureID, pos, glm::vec2{ size, size });
 }
 
 glm::mat4 CalculateBillboardMatrix(Registry& registry, entt::entity entity)

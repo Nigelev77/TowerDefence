@@ -108,8 +108,8 @@ static void RenderBillboards(Registry& registry)
 		billShader.SetMat4(cam.GetViewMat(), "view");
 		billShader.SetMat4(cam.m_Proj, "proj");
 		billShader.SetFloat(health.health / health.maxHealth, "health");
-		billShader.SetVec2(glm::vec2(bill.size, bill.size), "scale");
-		billShader.SetVec3(transform.pos, "worldPos");
+		billShader.SetVec2(bill.size, "scale");
+		billShader.SetVec3(transform.pos+bill.displacement, "worldPos");
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, bill.textureID);
 		billShader.SetUInt1(0, "tex");

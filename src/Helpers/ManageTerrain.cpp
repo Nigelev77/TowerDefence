@@ -31,6 +31,7 @@ namespace Terrain
 
 		float* verts = (float*)malloc(sizeof(float)*TERRAIN_SIZE*TERRAIN_SIZE*3);
 		unsigned int* indices = (unsigned int*)malloc(sizeof(unsigned int) * TERRAIN_BOX_NUM * TERRAIN_BOX_NUM * 6);
+		
 		if (!(verts && indices))
 		{
 			ERR_LOG("Could not create terrain, malloc failed");

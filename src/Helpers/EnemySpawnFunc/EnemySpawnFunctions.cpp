@@ -37,7 +37,7 @@ namespace Enemy
 
 		const static unsigned int healthbarTex = GetTextureInfo("healthbar");
 		
-		registry.emplace<BillboardComponent>(entity, healthbarTex, glm::vec3(0.0f, 5.0f, 0.0f), 10.0f);
+		registry.emplace<BillboardComponent>(entity, healthbarTex, glm::vec3(0.0f, 10.0f, 0.0f), glm::vec2{ 10.0f, 0.5f });
 
 	}
 
