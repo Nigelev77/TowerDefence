@@ -34,6 +34,7 @@
     <ClCompile Include="src\Helpers\MakeCube.cpp" />
     <ClCompile Include="src\Helpers\MoneyHelpers.cpp" />
     <ClCompile Include="src\Helpers\PathFinding.cpp" />
+    <ClCompile Include="src\Helpers\TextHelpers.cpp" />
     <ClCompile Include="src\Helpers\TextureHelpers.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacer.cpp" />
     <ClCompile Include="src\Helpers\TowerPlacerFunc\TowerPlaceFunc.cpp" />
@@ -98,11 +99,13 @@
     <ClInclude Include="src\Components\Bullet.h" />
     <ClInclude Include="src\Components\Cooldown.h" />
     <ClInclude Include="src\Components\Damage.h" />
+    <ClInclude Include="src\Components\DamageNumber.h" />
     <ClInclude Include="src\Components\Dead.h" />
     <ClInclude Include="src\Components\Lifetime.h" />
     <ClInclude Include="src\Components\Reward.h" />
     <ClInclude Include="src\Components\Target.h" />
     <ClInclude Include="src\Components\Targeter.h" />
+    <ClInclude Include="src\Components\TextBillboard.h" />
     <ClInclude Include="src\Components\TransitionLine.h" />
     <ClInclude Include="src\ContextTypes\PlayerInfo.h" />
     <ClInclude Include="src\Helpers\BillboardHelpers.h" />

@@ -62,11 +62,13 @@ namespace Input
 			camera.MoveCamera(ds * dt * speedModifier);
 		}
 
+
+		//This is outside the if statement so that it doesn't rotate randomly after exiting
+		Position& lastPos = input.lastPos;
+		Position& currPos = input.currPos;
 		//Rotate Camera
 		if(!freeMouse)
 		{
-			Position& lastPos = input.lastPos;
-			Position& currPos = input.currPos;
 
 			double dy = currPos.x-lastPos.x; //Reason for this is that going left/right rotates ON y axis, similar for dx
 			double dx = currPos.y - lastPos.y;
@@ -85,18 +87,20 @@ namespace Input
 			const WindowDetails& window = registry.ctx<WindowDetails>();
 			ImGuiIO& io = ImGui::GetIO();
 			if (freeMouse)
-			{
+			{ //Mouse is interacting with game
 				io.ConfigFlags = io.ConfigFlags | ImGuiConfigFlags_NoMouse; //disable imgui mouse interactions
 				glfwSetInputMode(window.window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 				glfwSetInputMode(window.window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+				input.MouseFree = false;
 			}
 			else
-			{
+			{ //Mouse is freed to interact with imgui
 				glfwSetInputMode(window.window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 				glfwSetInputMode(window.window, GLFW_RAW_MOUSE_MOTION, GLFW_FALSE);
 				glfwSetCursorPos(window.window, window.w / 2, window.h / 2);
 				io.ConfigFlags = io.ConfigFlags & !ImGuiConfigFlags_NoMouse; //enable imgui mouse interaction
 				//I could have ^ this but need to ensure that bit is definitely off.
+				input.MouseFree = true;
 			}
 			freeMouse = !freeMouse;
 			rUp = true;

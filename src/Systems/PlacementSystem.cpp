@@ -74,7 +74,7 @@ void UpdatePlacer(Registry& registry, float dt)
 	}
 
 	//TODO: Only allow this when the player in build mode
-	if (input.LButton)
+	if (input.LButton && !input.MouseFree)
 	{
 		if (Tower::AttemptTowerPlace(transform.pos))
 		{
